@@ -2,28 +2,59 @@
 ##Jared McMahon
 ##11/16/2018
 import random
-puzzle1 = ("LPZQEVGVLRTFPXHYFGGREPYUHFRNDZQAAEIGUITZKVRTTXPRWCVTOZIBNYU"+
+puzzle = ("LPZQEVGVLRTFPXHYFGGREPYUHFRNDZQAAEIGUITZKVRTTXPRWCVTOZIBNYU"+
                      "VZTCVHHGUVFNRULFFCKPFNAELOOBTPYEOOLFBTANDSTRINGNESRHQAPTLIH"+
                      "AGPJKFQRKRRAHTMEEWOAQVUBRPVVWOUELSEDNRNXMDEPWISURUGWRHPLIJA"+
                      "KCJLPBEDPIAMZHSEWARHTYXIXBELNMWKTVWSHFXJBOFHFFYTICPLEXUENQS"+
                      "NRKRWLZETVFBYXNRBOPSREYDGSGFLDYDCDIWNLTWWAHTTEPXYTSHZNCCPRZ"+
                      "SKKRCRRPKVIVCXRICODFYPJDEOVOBQSXDMFQMDFOWLMUQDXFPHIZMLLDUPA"+
                      "RRSKCDHAHRMOUQZCCZCFOSYXHKNMRYZIGGWKXEDNIJTAHD")
+question1 =""
+question2 =""
+question3 =""
+question4 =""
+question5 =""
+question6 =""
+question7 =""
+question8 =""
+question9 =""
+question10 =""
+question11 =""
+question12 =""
+question13 =""
+question14 =""
+question15 =""
+question16 =""
+question17 =""
+question18 =""
+question19 =""
+question20 =""
 
-
-puzzle = ("fjvfloatdyyopxedninsmspfycnnalxeaeeukgeislufryprlcabeeiagco"+
-       "ibuclqttbongojlivxobgadmyahgerjstringwvrs")
-
-
-
-
-puzzles = [puzzle,puzzle1]
-x=random.randrange(len(puzzles))
-
+answer1 ="TRUE"
+answer2 ="IMPORT"
+answer3 ="FOR"
+answer4 ="RETURN"
+answer5 ="ELSE"
+answer6 ="ELIF"
+answer7 ="BREAK"
+answer8 ="DEF"
+answer9 ="ERROR"
+answer10 ="SYNTAX"
+answer11 ="OPERATOR"
+answer12 ="INDEX"
+answer13 ="INTERGER"
+answer14 ="FLOAT"
+answer15 ="STRING"
+answer16 ="IF"
+answer17 ="WHILE"
+answer18 ="BOOLEAN"
+answer19 ="FUNCTION"
+answer20 ="PYTHON"
 
     
 
-def display_puzzle(randomPuzzles):
+def display_puzzle():
+    ##pre sets up puzzles
     line=" "
     line2=" "
     line3=" "
@@ -46,7 +77,7 @@ def display_puzzle(randomPuzzles):
     line20=" "
 
     
-    
+    ##sets up puzzle
     for i in range(len(puzzle)):
         if i <= 19:
             line =line + puzzle[i]+" | "
@@ -89,7 +120,7 @@ def display_puzzle(randomPuzzles):
         elif i<=399:
             line20 = line20 + puzzle[i]+" | "
 
-
+##prints puzzle
     print(line)
     print(line2)
     print(line3)
@@ -111,9 +142,37 @@ def display_puzzle(randomPuzzles):
     print(line19)
     print(line20)
 
+def puzzle():
+    index_pos=""
+    found_word=""
+    positions=input("input the index of each letter seperated by commas")
+
+    for i in (positions):
+        if i == ",":
+            x=int(index_pos)
+            found_word = found_word + puzzle[x]
+            index_pos = ""
+            continue
+        index_pos = index_pos+i
+    if found_word == answer:
+        score=10-attempts
+        points+=score
+        print("ya you got it")
+        break
+    else:
+        attemps=attemps+1
+        print("try again")
 
 
-def menu():
-    pass
 
-display_puzzle(puzzles[x])
+
+
+
+
+
+
+    
+
+
+display_puzzle()
+
