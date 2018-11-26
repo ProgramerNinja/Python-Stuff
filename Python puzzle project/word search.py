@@ -9,26 +9,26 @@ puzzle = ("LPZQEVGVLRTFPXHYFGGREPYUHFRNDZQAAEIGUITZKVRTTXPRWCVTOZIBNYU"+
                      "NRKRWLZETVFBYXNRBOPSREYDGSGFLDYDCDIWNLTWWAHTTEPXYTSHZNCCPRZ"+
                      "SKKRCRRPKVIVCXRICODFYPJDEOVOBQSXDMFQMDFOWLMUQDXFPHIZMLLDUPA"+
                      "RRSKCDHAHRMOUQZCCZCFOSYXHKNMRYZIGGWKXEDNIJTAHD")
-question1 =""
-question2 =""
-question3 =""
-question4 =""
-question5 =""
-question6 =""
-question7 =""
-question8 =""
-question9 =""
-question10 =""
-question11 =""
-question12 =""
-question13 =""
-question14 =""
-question15 =""
-question16 =""
-question17 =""
-question18 =""
-question19 =""
-question20 =""
+question1 ="a condition where it has to be correct to keep running"
+question2 ="a word that allows you to bring in variables like random"
+question3 ="loop that increases a variable every time it runs"
+question4 ="exits a function and goes back to the value of the caller"
+question5 ="only runs in the function if the if statement isn't true"
+question6 ="abbreviation for else if"
+question7 ="allows for you to kill a loop"
+question8 ="defines the function"
+question9 ="a problem with your code"
+question10 ="refers to how the code is arranged"
+question11 ="allows for you to add, subtact, multiply, divide, ect."
+question12 ="refers to a position within an ordered list"
+question13 ="a whole number"
+question14 ="a decimal number"
+question15 ="anythin' in quotation marks"
+question16 ="when true, it runs, when falkse else statement runs"
+question17 ="loop iterates while the condition is true"
+question18 ="evaluates a variable to either true or false (ex. .isalpha())"
+question19 ="the simplest callable object in python"
+question20 ="the programing language we are learning this year"
 
 answer1 ="TRUE"
 answer2 ="IMPORT"
@@ -51,6 +51,50 @@ answer18 ="BOOLEAN"
 answer19 ="FUNCTION"
 answer20 ="PYTHON"
 
+
+QUESTION = ("a condition where it has to be correct to keep running",
+          "a word that allows you to bring in variables like random",
+          "loop that increases a variable every time it runs",
+          "exits a function and goes back to the value of the caller",
+          "only runs in the function if the if statement isn't true",
+          "abbreviation for else if",
+          "allows for you to kill a loop",
+          "defines the function",
+          "a problem with your code",
+          "refers to how the code is arranged",
+          "allows for you to add, subtact, multiply, divide, ect.",
+          "refers to a position within an ordered list",
+          "a whole number",
+          "a decimal number",
+          "anythin' in quotation marks",
+          "when true, it runs, when falkse else statement runs",
+          "loop iterates while the condition is true",
+          "evaluates a variable to either true or false (ex. .isalpha())",
+          "the simplest callable object in python",
+          "the programing language we are learning this year"
+          )
+
+ANSWER = ("TRUE",
+            "IMPORT",
+            "FOR",
+            "RETURN",
+            "ELSE",
+            "ELIF",
+            "BREAK",
+            "DEF",
+            "ERROR",
+            "SYNTAX",
+            "OPERATOR",
+            "INDEX",
+            "INTERGER",
+            "FLOAT",
+            "STRING",
+            "IF",
+            "WHILE",
+            "BOOLEAN",
+            "FUNCTION",
+            "PYTHON"
+            )
     
 
 def display_puzzle():
@@ -143,25 +187,29 @@ def display_puzzle():
     print(line20)
 
 def puzzle():
-    index_pos=""
-    found_word=""
-    positions=input("input the index of each letter seperated by commas")
+    for l in range(len(QUESTION))
+        question = QUESTION[l]
+        answer = ANSWER[l]
+        index_pos=""
+        found_word=""
+        print(question)
+        positions=input("input the index of each letter seperated by commas")
 
-    for i in (positions):
-        if i == ",":
-            x=int(index_pos)
-            found_word = found_word + puzzle[x]
-            index_pos = ""
-            continue
-        index_pos = index_pos+i
-    if found_word == answer:
-        score=10-attempts
-        points+=score
-        print("ya you got it")
-        break
-    else:
-        attemps=attemps+1
-        print("try again")
+        for i in (positions):
+            if i == ",":
+                x=int(index_pos)
+                found_word = found_word + puzzle[x]
+                index_pos = ""
+                continue
+            index_pos = index_pos+i
+        if found_word == answer:
+            score=10-attempts
+            points+=score
+            print("ya you got it")
+            break
+        else:
+            attemps=attemps+1
+            print("try again")
 
 
 
