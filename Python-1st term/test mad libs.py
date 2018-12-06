@@ -1,0 +1,12 @@
+print("Please fill in the the following with appropriate text!")
+name1 = input("Name:")
+name2 = input("Name:")
+adjective1 = input("Adjective:")
+adjective2 = input("Adjective:")
+verb1 = input("Verb:")
+verb2 = input("Verb:")
+place1 = input("place:")
+place2 = input("place:")
+print(adjective1 + " " + name1 + " likes " + verb1 + " in " + place1 + " but " + adjective2 + " " + name2 + " hates " + verb2 + " in " + place2 + " then they all died.")
+
+input()
