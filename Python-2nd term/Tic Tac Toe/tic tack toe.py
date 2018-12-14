@@ -82,10 +82,10 @@ def display_board():
 
 #########################################################################################################
 
-def legal_moves():
+def legal_moves(board):
     moves = []
     for square in range(NUM_SQUARES):
-        if moves == "":
+        if board[square] == EMPTY:
             moves.append(square)
         else:
             continue
@@ -111,6 +111,99 @@ def winner(board):
         return TIE
 
     return None
+
+#########################################################################################################
+
+def human_move(board):
+    move = None
+    legal = legal_moves(board)
+    while move not in legal:
+        move = ask_number("where would you like to go (0-8): ",0,NUM_SQUARES)
+        if move not in legal:
+            print("you are a noob, try again. Try using your eyes!")
+    print("Well... Ok, fine you can go there...grrrr")
+    return move
+        
+#########################################################################################################
+
+def next_turn(turn):
+    """Switches the turn."""
+    if turn == X:
+        return O
+    else:
+        return X
+
+#########################################################################################################
+
+def congrat_winner():
+    """Congradulate the winner"""
+    if the_winner != TIE:
+        print(the_winner,"won!\n")
+    else:
+        print("Its's a tie!")
+
+    if the_winner == computer:
+        print("Computers shall rule the world!")
+
+    elif the_winner == human:
+        print("Congrats you won, this time...")
+
+    elif the_winner == TIE:
+        print("You have done the unthinkable, the uncaonsevable, you tied me!")
+
+#########################################################################################################
+
+def computer_move(board, computer, human):
+    """Make computer move."""
+    #make a copy to work with since function changes the list
+    board
+    #the best postions to have, in order
+    BEST_MOVES = (4,0,2,6,8,1,3,5,7)
+    print("i will take square number", end=" ")
+    #if computer can win take that move
+    for move in legal_moves(board):
+        board[move] = computer
+        if winner(board) == computer:
+            print(move)
+            return move
+        #done checking this move now undo it
+        board[move] = EMPTY
+
+    for move in legal_moves(board):
+            board[move] = human
+            if winner(board) == human:
+                print(move)
+                return move
+            #done checking this move now undo it
+            board[move] = EMPTY
+
+    #since no one can win on the next move, pick best open square
+    for move in BEST_MOVES:
+        if move in legal_moves(board):
+            print(move)
+            return(move)
+board = new_board()
+h=X
+C=O
+move = computer_move(board,c,h)
+print(move)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
