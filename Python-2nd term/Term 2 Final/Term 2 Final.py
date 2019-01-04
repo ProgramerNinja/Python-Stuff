@@ -54,7 +54,7 @@ def main():
     title = next_line(the_file)
     welcome(title)
     score = 0
-    next_block(the_file)
+    category, question, answers, correct, explenation = next_block(the_file)
     while category:
         print(category)
         print(question)
@@ -68,7 +68,7 @@ def main():
             print("That was wrong. :[")
         print(explenation)
         print("Your score is now", score)
-        next_block(the_file)
+        category, question, answers, correct, explenation = next_block(the_file)
     trivia_stuff.txt.close()
     print("Thanks for playing my Trivia quiz.\n\t\tYor Score was ", score, "out of 10")
     input("Press the enter key to exit")
