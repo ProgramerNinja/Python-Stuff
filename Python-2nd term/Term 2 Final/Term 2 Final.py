@@ -59,9 +59,9 @@ def main():
         print(category)
         print(question)
         for i in range(4):
-            print(answers[i-1])
-        guesss = input("What do you think the answer is?: ")
-        if guess == answer:
+            print(answers[i])
+        guess = input("What do you think the answer is?: ")
+        if guess == correct:
             print("Yay! you got it right!")
             score = score + 1
         else:
@@ -69,8 +69,9 @@ def main():
         print(explenation)
         print("Your score is now", score)
         category, question, answers, correct, explenation = next_block(the_file)
-    trivia_stuff.txt.close()
+
     print("Thanks for playing my Trivia quiz.\n\t\tYor Score was ", score, "out of 10")
     input("Press the enter key to exit")
+    sys.exit()
 
 main()
