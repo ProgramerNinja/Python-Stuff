@@ -2,7 +2,7 @@
 #12/10/18
 #tickity tackity toeity
 
-#global constants
+# global constants
 X = "X"
 O = "O"
 EMPTY = " "
@@ -10,31 +10,34 @@ TIE = "TIE"
 NUM_SQUARES = 9
 
 #functions
+################################################################
 def display_instructions():
-    print("""Welcome to TIC TAC TOE
-          In in TIC TAC TOE you will be competing against a computer to get
-          three in a row
+    """Display game instructions."""
+    print(
+    """
+    Welcome to the greatest intellectual challenge of all time: Tic-Tac-Toe.  
+    This will be a showdown between your human brain and my silicon processor.  
 
+    You will make your move known by entering a number, 0 - 8.  The number 
+    will correspond to the board position as illustrated:
+    
+                    0 | 1 | 2
+                    ----------
+                    3 | 4 | 5
+                    ----------
+                    6 | 7 | 8
 
-              0 | 1 | 2
-              ---------
-              3 | 4 | 5
-              ---------
-              6 | 7 | 8
-
-              """)
-
-#########################################################################################################
-
+    Prepare yourself, human.  The ultimate battle is about to begin. \n
+    """
+    )
+################################################################
 def ask_yes_no(question):
-    """Ask a yes or no question"""
+    """Ask a yes or no question."""
     response = None
-    while response not in ("y","n"):
-          response = input(question).lower()
+    while response not in ("y", "n"):
+        response = input(question+" y or n").lower()
     return response
-
-#########################################################################################################
-
+################################################################
 def ask_number(question, low, high):
     """Ask for a number within a range."""
     response = "9999"
@@ -48,153 +51,158 @@ def ask_number(question, low, high):
             print("you must enter a number")
             response = input(question)
     return int(response)
-
-#########################################################################################################
+################################################################
 def pieces():
-    go_first = ask_yes_no("do you want to go first y or n")
+    """Determine if player or computer goes first."""
+    go_first = ask_yes_no("Do you require the first move? (y/n): ")
     if go_first == "y":
-        print("Ha, you will lose either way")
-        player_piece = X
-        computer_piece = O
+        print("\nThen take the first move.  You will need it.")
+        human = X
+        computer = O
     else:
-        print("Ha, you will lose either way")
-        player_piece = O
-        computer_piece = X
-    return player_piece, computer_piece
-
-#########################################################################################################
-
+        print("\nYour bravery will be your undoing... I will go first.")
+        computer = X
+        human = O
+    return computer, human
+################################################################
 def new_board():
+    """Create new game board."""
     board = []
     for square in range(NUM_SQUARES):
         board.append(EMPTY)
     return board
-
-#########################################################################################################
-
-def display_board():
-    """display game on screen"""
+################################################################
+def display_board(board):
+    """Display game board on screen."""
     print("\n\t", board[0], "|", board[1], "|", board[2])
     print("\t", "---------")
     print("\t", board[3], "|", board[4], "|", board[5])
     print("\t", "---------")
-    print("\t", board[6], "|", board[7], "|", board[8])
-
-#########################################################################################################
-
+    print("\t", board[6], "|", board[7], "|", board[8], "\n")
+################################################################
 def legal_moves(board):
+    """Create list of legal moves."""
     moves = []
     for square in range(NUM_SQUARES):
         if board[square] == EMPTY:
             moves.append(square)
-        else:
-            continue
-        return moves
-
-#########################################################################################################
-
+    return moves
+################################################################
 def winner(board):
-    """determine the game winner"""
-    WAYS_TO_WIN = ((0,1,2),
-                   (3,4,5),
-                   (6,7,8),
-                   (0,3,6),
-                   (1,4,7),
-                   (2,5,8),
-                   (0,4,8),
-                   (2,4,6))
+    """Determine the game winner."""
+    WAYS_TO_WIN = ((0, 1, 2),
+                   (3, 4, 5),
+                   (6, 7, 8),
+                   (0, 3, 6),
+                   (1, 4, 7),
+                   (2, 5, 8),
+                   (0, 4, 8),
+                   (2, 4, 6))
     for row in WAYS_TO_WIN:
         if board[row[0]] == board[row[1]] == board[row[2]] != EMPTY:
             winner = board[row[0]]
             return winner
+
     if EMPTY not in board:
         return TIE
 
     return None
-
-#########################################################################################################
-
+################################################################
 def human_move(board):
-    move = None
+    """Get human move."""  
     legal = legal_moves(board)
+    move = None
     while move not in legal:
-        move = ask_number("where would you like to go (0-8): ",0,NUM_SQUARES)
+        move = ask_number("Where will you move? (0 - 8):", 0, NUM_SQUARES)
         if move not in legal:
-            print("you are a noob, try again. Try using your eyes!")
-    print("Well... Ok, fine you can go there...grrrr")
+            print("\nThat square is already occupied, foolish human.  Choose another.\n")
+    print("Fine...")
     return move
-        
-#########################################################################################################
-
+################################################################
 def next_turn(turn):
-    """Switches the turn."""
+    """Switch turns."""
     if turn == X:
         return O
     else:
         return X
-
-#########################################################################################################
-
-def congrat_winner():
-    """Congradulate the winner"""
+################################################################
+def congrat_winner(the_winner, computer, human):
+    """Congratulate the winner."""
     if the_winner != TIE:
-        print(the_winner,"won!\n")
+        print(the_winner, "won!\n")
     else:
-        print("Its's a tie!")
+        print("It's a tie!\n")
 
     if the_winner == computer:
-        print("Computers shall rule the world!")
+        print("As I predicted, human, I am triumphant once more.  \n" \
+              "Proof that computers are superior to humans in all regards.")
 
     elif the_winner == human:
-        print("Congrats you won, this time...")
+        print("No, no!  It cannot be!  Somehow you tricked me, human. \n" \
+              "But never again!  I, the computer, so swear it!")
 
     elif the_winner == TIE:
-        print("You have done the unthinkable, the uncaonsevable, you tied me!")
-
-#########################################################################################################
-
+        print("You were most lucky, human, and somehow managed to tie me.  \n" \
+              "Celebrate today... for this is the best you will ever achieve.")
+################################################################
 def computer_move(board, computer, human):
     """Make computer move."""
-    #make a copy to work with since function changes the list
-    board
-    #the best postions to have, in order
-    BEST_MOVES = (4,0,2,6,8,1,3,5,7)
-    print("i will take square number", end=" ")
-    #if computer can win take that move
+    # make a copy to work with since function will be changing list
+    board = board[:]
+     # the best positions to have, in order
+    BEST_MOVES = (4, 0, 2, 6, 8, 1, 3, 5, 7)
+    print("I shall take square number", end=" ")
+    
+    # if computer can win, take that move
     for move in legal_moves(board):
         board[move] = computer
         if winner(board) == computer:
             print(move)
             return move
-        #done checking this move now undo it
+        # done checking this move, undo it
+        board[move] = EMPTY
+        
+    for move in legal_moves(board):
+        board[move] = human
+        if winner(board) == human:
+            print(move)
+            return move
+        # done checkin this move, undo it
         board[move] = EMPTY
 
-    for move in legal_moves(board):
-            board[move] = human
-            if winner(board) == human:
-                print(move)
-                return move
-            #done checking this move now undo it
-            board[move] = EMPTY
-
-    #since no one can win on the next move, pick best open square
+    # since no one can win on next move, pick best open square
     for move in BEST_MOVES:
         if move in legal_moves(board):
             print(move)
-            return(move)
-board = new_board()
-h=X
-C=O
-move = computer_move(board,c,h)
-print(move)
+            return move
+
+#########################################################################################################
+
+def main():
+    display_instructions()
+    computer, human = pieces()
+    turn = X
+    board = new_board()
+    display_board(board)
+    while not winner(board):
+        if turn == human:
+            move = human_move(board)
+            board[move]=human
+        else:
+            move = computer_move(board, computer, human)
+            board[move]= computer
+        display_board(board)
+        turn = next_turn(turn)
+        
+
+
+    the_winner = winner(board)
+    congrat_winner(the_winner, computer, human)
+    input("Press enter to exit")
 
 
 
-
-
-
-
-
+main()
 
 
 
