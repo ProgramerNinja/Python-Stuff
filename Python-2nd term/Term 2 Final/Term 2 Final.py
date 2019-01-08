@@ -60,7 +60,7 @@ def main():
         print(question)
         for i in range(4):
             print(answers[i])
-        guess = input("What do you think the answer is?: ")
+        guess = input("What do you think the answer is?: ").lower()
         if guess == correct:
             print("Yay! you got it right!")
             score = score + 1
