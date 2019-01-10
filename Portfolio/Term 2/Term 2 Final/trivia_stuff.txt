@@ -1,0 +1,81 @@
+Your doom /         answer with a,b,c,d please.//
+1. python/
+What would be the answer of print(10+12+11, "meow")
+a. 33 meow
+b. 34 dog
+c. 43 mooo
+d. 123456789
+a
+a. 10 + 12 + 11 = 33 then meow//----------------------------------------------------
+2. more python/
+Which is a valid Python code comment?
+a.  (comment) warnings can be placed in comments. 
+b.  "forward slash, forward slash" comments make code easier to update. 
+c.  [comment] comments can provide use instructions for other developers. 
+d.  # use comments to describe the function of code. 
+d
+d. Because python said so!//-------------------------------------------------
+3. mo python/
+Jupyter Notebooks have code cells and markdown cells.
+a. True
+b. False
+c. N\a
+d. N\a
+a
+a. They have cells to help us and make it look nice//--------------------------------------------
+4. even mo python/
+Which version of Python does this course cover?
+a. Python 3
+b. Python 2 
+c. Python 4 
+d. Python 5 
+a
+a. Python 3 is what our teacher wants to teach us.//---------------------------------------------
+5. notebook python/
+Which is NOT a way to run a code cell in a Jupyter Notebook?
+a. Shift + Enter 
+b. Ctrl + Enter 
+c. Shift + R 
+d. Menu: Cell... > Run Cells 
+c
+c. Because that is how microsoft programmed it.//-----------------------------------------------
+6. bull crap python stuff that's still really cool/
+Which is a Python method of getting numeric input that can be used in math?
+a. num1 = str(input("enter a number"))
+b. num1 = (input("enter a number")).float() 
+c. num1 = int(input("enter a number")) 
+d. num1 = get_int 
+c
+c. because the other options go for something not int or is inproper syntax//----------------------------------------------
+7. python syntax/
+Which statement sets the variable s to a value of "Chapter1"?
+a. print("Chapter", "1") 
+b. s = "Chapter" + 1 
+c. s = input("Chapter" + str(1)) 
+d. s = "Chapter" + str(1) 
+d
+d. other don't define it or have a space or throw errors when ran.//----------------------------------------------
+8. simple python/
+Which of the following is a Python function?
+a. print() 
+b. def 
+c. x = 3 
+d. "Hello World!" 
+a
+a. the rest of them only definfe a variable or function or are simple strings.//----------------------------------------------
+9. math in python/
+What is the order of precedence (from first to last) of the math operators?
+a. *, +, divide, - 
+b. *, divide, +, - 
+c. *, +, -, divide 
+d. +, -, divide, * 
+b
+That is what the math gods chose for the plebians//-----------------------------------------
+10. last one is easy python/
+What does the input() function return?
+a. a float value 
+b. a string value 
+c. an integer value 
+d. All of the above 
+b
+b. it is the only format that can always be true.//
