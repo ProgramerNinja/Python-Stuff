@@ -5,6 +5,7 @@
 deck = []
 player1_hand = []
 player2_hand = []
+import random
 
 def makedeck(deck):
     """populate the deck of cards"""
@@ -14,6 +15,7 @@ def makedeck(deck):
         for i in VALUES:
             card = i+" "+e
             deck.append(card)
+    return deck
 
 
 
@@ -23,23 +25,28 @@ def shuffledeck(deck):
         temp = deck[i]
         deck[i] = deck[j]
         deck[j] = temp
+    return deck
 
 def dealcard(deck,player1_hand,player2_hand):
     for i in range(5):
         card = deck.pop()
         player1_hand.append(card)
         card = deck.pop()
-        player2_hand.append(card)            
+        player2_hand.append(card)
+    return player1_hand, player2_hand
 
 
 
 
+def main(deck,player1_hand,player2_hand):
+
+    player1_hand, player2_hand = dealcard(shuffledeck(makedeck(deck)),player1_hand,player2_hand)
+    print("player 1's hand: ", player1_hand, "\nPlayer 2's hand: ", player2_hand)
 
 
 
 
-
-
+main(deck,player1_hand,player2_hand)
 
 
 

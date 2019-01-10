@@ -1,0 +1,1 @@
+This is a word seach program that has you answer with index positions after showing the puzzle and word bank.

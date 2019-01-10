@@ -1,0 +1,1 @@
+This program assigns 5 cards to two hands and then presents them to the user.

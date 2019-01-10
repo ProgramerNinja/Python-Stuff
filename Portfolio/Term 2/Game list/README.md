@@ -1,0 +1,1 @@
+This is a program that allows you to add, delete, and view game names to a list.
