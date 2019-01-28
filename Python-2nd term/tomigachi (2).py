@@ -51,7 +51,7 @@ class Critter(object):
         return mood
 
 def main():
-        name = input("What do you want to name your critter?: ")
+        self.name = input("What do you want to name your critter?: ")
         crit1 = Critter()
         choice = 0
         while choice == 0:
