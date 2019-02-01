@@ -51,9 +51,22 @@ class Player(object):
                 p3p[self.position] = self.token
         else:
             print("You have to roll a "+str(99-self.position)+" to land on the winning '100' space!")
+            oldpos = self.position
+            self.position = self.position - ((self.position + roll)-99)
+            if self.player_num == 1:
+                p1p[oldpos] = EMPTY
+                p1p[self.position] = self.token
+            elif self.player_num == 2:
+                p2p[oldpos] = EMPTY
+                p2p[self.position] = self.token
+            elif self.player_num == 3:
+                p3p[oldpos] = EMPTY
+                p3p[self.position] = self.token
+            elif self.player_num == 4:
+                p3p[oldpos] = EMPTY
+                p3p[self.position] = self.token
 
         return self.position
-
 
     def win(self):
         if self.position == 99:
@@ -61,7 +74,6 @@ class Player(object):
             return self.token
         else:
             return None
-
 
 
 class Board(object):
@@ -109,7 +121,6 @@ class Board(object):
             p2p.append(EMPTY)
             p3p.append(EMPTY)
             p4p.append(EMPTY)
-
 
     def display_board(self):
         print("------------------------------------------------------------------------")
@@ -203,51 +214,60 @@ class Board(object):
 
 
 class Space(object):
-    def __int__(self):
+    def __init__(self, move):
         self.move = move
 
     def move_player(self, player, board):
         oldpos = player.position
         player.position = player.position + self.move
         if self.move > 0:
-            print("This place has a ladder. " + player.piece + " moves up", self.move, "spaces")
+            print("This place has a ladder. " + player.token + " moves up", self.move, "spaces")
             input("Press enter to continue...")
         elif self.move < 0:
-            print("This space has a chute on it." + player.piece + " slides down", self.move, "spaces")
+            print("This space has a chute on it." + player.token + " slides down", self.move, "spaces")
             input("Press enter to continue...")
         if self.move > 0 or self.move < 0:
-            if player.player_num ==1:
+            if player.player_num == 1:
                 p1p[oldpos] = EMPTY
-                p1p[player.positon] = plyer.token
+                p1p[player.position] = player.token
             elif player.player_num == 2:
                 p2p[oldpos] = EMPTY
-                p2p[player.positon] = plyer.token
+                p2p[player.position] = player.token
             elif player.player_num == 3:
                 p3p[oldpos] = EMPTY
-                p3p[player.positon] = plyer.token
+                p3p[player.position] = player.token
             elif player.player_num == 4:
                 p4p[oldpos] = EMPTY
-                p4p[player.positon] = plyer.token
-        board.displayboard()
+                p4p[player.position] = player.token
+        Board.display_board(self)
 
 
 #functions
 ########################################################################################################
 def ask_num():
-    pass
+    num_players = int(input("How many people are playing? (1-4):"))
+    return num_players
 
-def switch_turn():
-    pass
+def switch_turn(num_players, turn):
+    winner = None
+    while not winner:
+        winner = players[turn].win()
+        turn + 1
+        if turn > num_players:
+            turn = 0
+    return turn
+
 
 def winner_congrats():
-    pass
+    winner = players[turn].win()
+    print("Hoo Yaa" + winner + "won!")
 
 #main
 ########################################################################################################
 def main():
     num_players = ask_num()
     players = []
-    turn = 0
+    turn = -1
     winner = None
     board = Board()
     board.create_spaces()
@@ -255,22 +275,21 @@ def main():
         print("Player", i+1)
         name = input("Enter your name: ")
         name = name.title()
-        player = Playr(name, i+1)
+        player = Player(name, i+1)
         players.append(player)
 
 
     while not winner:
-        print(players[turn].name + " piece " + players[turn].token + " it is your turn!")
+        print(players[turn].token + " it is your turn!")
         input("Press enter to roll!")
         players[turn].move()
-        playerpos = player[turn].position
+        playerpos = players[turn].position
         space = board.board[playerpos]
         space.move_player(players[turn], board)
         winner = players[turn].win()
-        if not winner:
-            turn = turn+1 ##switch_turn(num_players, turn)
+        turn = switch_turn(num_players, turn) ##switch_turn(num_players, turn)
 
-    winner_grats()
+    winner_congrats()
     print(winner)
     input("Press enter to quit...")
 
