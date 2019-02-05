@@ -210,7 +210,8 @@ class Board(object):
               p2p[2] + "  | 2" + p1p[1] + p2p[1] + "  |  1" + p1p[0] + p2p[0] + "  | ")
         print("|  " + p3p[9] + p4p[9] + "  |  " + p3p[8] + p4p[8] + "  |  " + p3p[7] + p4p[7] + "  |  " + p3p[6] + p4p[
             6] + "  |  " + p3p[5] + p4p[5] + "  |  " + p3p[4] + p4p[4] + "  |  " + p3p[3] + p4p[3] + "  |  " + p3p[2] +
-              p4p[2] + "  |  " + p3p[1] + p4p[1] + "  |  " + p3p[0] + p4p[0] + "  | ")
+              p4p[2] + "  |  " + p3p[1] + p4p[1] + "  |  " + p3p[0] + p4p[0] + "   | ")
+        print("------------------------------------------------------------------------")
 
 
 class Space(object):
@@ -245,22 +246,26 @@ class Space(object):
 #functions
 ########################################################################################################
 def ask_num():
-    num_players = int(input("How many people are playing? (1-4):"))
-    return num_players
+    while True:
+        num_players = input("How many people are playing? (1-4):")
+        try:
+            num_players = int(num_players)
+            if 0 <= num_players <= 3:
+                return num_players
+            else:
+                print("Sorry, please choose between 1 and 4")
+        except:
+            print("That was not a valid input, please enter a number between 1 and 4.")
 
 def switch_turn(num_players, turn):
-    winner = None
-    while not winner:
-        winner = players[turn].win()
-        turn + 1
-        if turn > num_players:
-            turn = 0
+    turn = turn + 1
+    if turn >= num_players:
+        turn = 0
     return turn
 
 
-def winner_congrats():
-    winner = players[turn].win()
-    print("Hoo Yaa" + winner + "won!")
+def winner_congrats(winner):
+    print("Hoo Yaa", winner, "won!")
 
 #main
 ########################################################################################################
@@ -278,7 +283,6 @@ def main():
         player = Player(name, i+1)
         players.append(player)
 
-
     while not winner:
         print(players[turn].token + " it is your turn!")
         input("Press enter to roll!")
@@ -289,7 +293,7 @@ def main():
         winner = players[turn].win()
         turn = switch_turn(num_players, turn) ##switch_turn(num_players, turn)
 
-    winner_congrats()
+    winner_congrats(winner)
     print(winner)
     input("Press enter to quit...")
 
