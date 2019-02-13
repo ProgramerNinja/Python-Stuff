@@ -10,7 +10,7 @@ class Card(object):
     Will create a card with suit and rank"""
 
     RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-    SUITS = ["c", "d", "h", "s"]
+    SUITS = ["♣", "♦", "♥", "♠"]
 
     def __init__(self, rank, suit):
         self.rank = rank
@@ -90,47 +90,7 @@ class PositionableCard(Card):
     def flip(self):
         self.is_face_up = not self.is_face_up
 
-def main():
-    deck = Deck()
-    deck.populate()
-    deck.shuffle()
-    hand1 = Hand()
-    hand2 = Hand()
-    hands =[hand1, hand2]
-    print(deck)
-    deck.deal(hands, 5)
-    for i in range(len(hand1.cards)):
-        hand1.cards[i-1].flip()
-        hand2.cards[i-1].flip()
-    print(hand1)
-    print()
-    print(hand2)
 
-
-main()
-
-
-# my_hand = Hand()
-#
-# your_hand = Hand()
-#
-# deck = []
-# for i in range(10):
-#    card = Card(rank = random.choice(Card.RANKS), suit = random.choice(Card.SUITS))
-#    deck.append(card)
-#
-# for i in range(5):
-#     my_hand.add(deck.pop())
-#     your_hand.add(deck.pop())
-#
-# print(my_hand)
-# print(your_hand)
-#
-# my_hand.give(my_hand.cards[0], your_hand)
-#
-# print(my_hand, "\n", your_hand)
-#
-# my_hand.clear()
-# your_hand.clear()
-#
-# print(my_hand, "\n", your_hand)
+if __name__ == "__main__":
+    print("You ran  this module directly (and did not import it).")
+    input("\n\nPress the enter key to exit.")
