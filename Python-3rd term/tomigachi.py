@@ -51,12 +51,12 @@ class Critter(object):
         return mood
 
 def main():
-        self.name = input("What do you want to name your critter?: ")
+        name = input("What do you want to name your critter?: ")
         crit1 = Critter()
         choice = 0
         while choice == 0:
             print("What do you want to do?\n0. Quit\n1. Have the critter talk\n2. Feed the critter\n3. Play with the critter.")
-            choice = int(input("Enter 1,2,3,4: "))
+            choice = int(input("Enter 1,2,3,4: "))-1
         if choice == 0:
             print("Goodbye")
             exit()
