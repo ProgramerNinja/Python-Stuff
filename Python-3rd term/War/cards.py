@@ -54,7 +54,7 @@ class Hand(object):
 
     def give(self, card, other_hand):
         self.cards.remove(card)
-        other_hand.add(card)
+        other_hand.append(card)
 
 
 class Deck(Hand):
