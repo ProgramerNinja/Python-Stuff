@@ -24,6 +24,10 @@ class War_Hand(cards.Hand):
         super(War_Hand, self).__init__()
         self.name = name
 
+    def __str__(self):
+        rep = self.name , ": " , str(len(self.cards))
+        return rep
+
 class War_Player(War_Hand):
     def lose(self):
         print(self.name, "loses.")
@@ -42,6 +46,11 @@ class War_Player(War_Hand):
 
 class War_Field(War_Hand):
 
+    def __str__(self):
+        rep = self.cards[0], " VS. " , self.cards[1]
+        rep = str(rep)
+        return rep
+
     @property
     def check_winner(self):
         if self.cards[0].value > self.cards[1].value:
@@ -54,9 +63,11 @@ class War_Field(War_Hand):
 
     def give_to_pot(self,pot):
         for i in range(len(self.cards)):
-            print(pot)
+            print(pot.cards)
             print(self.cards)
             self.give(self.cards[0],pot)
+
+
 class War_Pot(War_Hand):
     def give_to_winner(self,winner):
         for i in range(len(self.cards)):
@@ -87,7 +98,7 @@ class War_Game(object):
         self.players[0].play(self.field)
         self.players[1].play(self.field)
 
-        print(self.field)
+        print(self.field.cards)
         winner = self.field.check_winner
         self.field.give_to_pot(self.pot)
         if winner == 0 or winner == 1:
