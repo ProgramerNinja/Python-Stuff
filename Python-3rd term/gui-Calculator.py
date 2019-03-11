@@ -18,8 +18,8 @@ class Application(Frame):
         """Creating buttons for adding subtracting etc"""
 
         """display"""
-        self.entered = Text(self, width=30, height=2, wrap=WORD)
-        self.entered.grid(row=0, column=0, columnspan=30, sticky=W)
+        self.entered = Text(self, width=10, height=2, wrap=WORD)
+        self.entered.grid(row=0, column=0, columnspan=10, sticky=W)
 
 
 
