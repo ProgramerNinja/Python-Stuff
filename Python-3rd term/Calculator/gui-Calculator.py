@@ -206,31 +206,40 @@ class Application(Frame):
         self.entered.insert(END, self.display)
 
     def sub(self):
-        self.opperator = "+"
+        self.opperator = "-"
         self.pos1 = self.display
         self.display = ""
         self.entered.delete(0.0, END)
         self.entered.insert(END, self.display)
 
     def tms(self):
-        self.opperator = "+"
+        self.opperator = "*"
         self.pos1 = self.display
         self.display = ""
         self.entered.delete(0.0, END)
         self.entered.insert(END, self.display)
 
     def div(self):
-        self.opperator = "+"
+        self.opperator = "÷"
         self.pos1 = self.display
         self.display = ""
         self.entered.delete(0.0, END)
         self.entered.insert(END, self.display)
+
     def equate(self):
         self.pos2 = self.display
         if self.opperator == "+":
             self.display = (int(self.pos1) + int(self.pos2))
+
         elif self.opperator == "-":
-            pass
+            self.display = (int(self.pos1) - int(self.pos2))
+
+        elif self.opperator == "*":
+            self.display = (int(self.pos1) * int(self.pos2))
+
+        elif self.opperator == "÷":
+            self.display = (int(self.pos1) // int(self.pos2))
+
         self.pos1=self.display
         self.pos2 = ""
         self.entered.delete(0.0, END)
@@ -239,7 +248,11 @@ class Application(Frame):
 
 
     def clear(self):
-        pass
+        self.entered.delete(0.0, END)
+        self.pos1 = ""
+        self.pos2 = ""
+        self.opperator = ""
+        self.display = ""
 
 
 
