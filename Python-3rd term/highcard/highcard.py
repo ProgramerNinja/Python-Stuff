@@ -7,6 +7,13 @@ deck = cards.Deck()
 deck.populate()
 deck.shuffle()
 
+class HighHand (object):
+    def __init__(self, name):
+        super(HighHand, self).__init__()
+        self.name = name
+
+
+
 print("Welcome to the world's easiest game of high card!\n")
 
 again = None
@@ -15,10 +22,10 @@ while again != "n":
     num = games.ask_number(question="How many players? (2-10):", low=2, high=11)
     for i in range(num):
         name = input("Player name: ")
-        player = games.Player(name)
-        hands.append(hand)
-    deck.deal(hands, 1)
-    print("\nHere are the resulks")
+        player = HighHand(name)
+        players.append(player)
+    deck.deal(players, 1)
+    print("\nHere are the results")
     for player in players:
         print(player)
 
