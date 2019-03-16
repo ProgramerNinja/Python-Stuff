@@ -12,6 +12,10 @@ class Application(Frame):
         super(Application, self).__init__(master)
         self.grid()
         self.create_widgets()
+        self.opperator=""
+        self.pos1=""
+        self.pos2=""
+        self.display=""
 
 
     def create_widgets(self):
@@ -145,53 +149,110 @@ class Application(Frame):
 
     """number adding"""
     def add1(self):
-        pass
+        self.display+="1"
+        self.entered.delete(0.0,END)
+        self.entered.insert(END, self.display)
 
     def add2(self):
-        pass
+        self.display += "2"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def add3(self):
-        pass
+        self.display += "3"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def add4(self):
-        pass
-
+        self.display += "4"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
     def add5(self):
-        pass
+        self.display += "5"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def add6(self):
-        pass
+        self.display += "6"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def add7(self):
-        pass
+        self.display += "7"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def add8(self):
-        pass
+        self.display += "8"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def add9(self):
-        pass
+        self.display += "9"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def add0(self):
-        pass
+        self.display += "0"
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     """Operating"""
     def add(self):
-        pass
+        self.opperator="+"
+        self.pos1 = self.display
+        self.display = ""
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def sub(self):
-        pass
+        self.opperator = "-"
+        self.pos1 = self.display
+        self.display = ""
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def tms(self):
-        pass
+        self.opperator = "*"
+        self.pos1 = self.display
+        self.display = ""
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def div(self):
-        pass
+        self.opperator = "÷"
+        self.pos1 = self.display
+        self.display = ""
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
 
     def equate(self):
-        pass
+        self.pos2 = self.display
+        if self.opperator == "+":
+            self.display = (int(self.pos1) + int(self.pos2))
+
+        elif self.opperator == "-":
+            self.display = (int(self.pos1) - int(self.pos2))
+
+        elif self.opperator == "*":
+            self.display = (int(self.pos1) * int(self.pos2))
+
+        elif self.opperator == "÷":
+            self.display = (int(self.pos1) // int(self.pos2))
+
+        self.pos1=self.display
+        self.pos2 = ""
+        self.entered.delete(0.0, END)
+        self.entered.insert(END, self.display)
+
+
 
     def clear(self):
-        pass
+        self.entered.delete(0.0, END)
+        self.pos1 = ""
+        self.pos2 = ""
+        self.opperator = ""
+        self.display = ""
 
 
 
